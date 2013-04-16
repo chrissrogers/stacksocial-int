@@ -1,4 +1,49 @@
-Hi
 <% if signed_in? %>
-  Sup dude
+
+  <script>
+    window.App = { users: <%= raw @tweets.map{|t| t.user }.to_json %> };
+  </script>
+
+  <section>
+    <header>
+      <h2>Tweets matching the term <%= render 'term_form' %></h2>
+    </header>
+    <% if @tweets %>
+      <ul>
+        <% @tweets.each do |tweet| %>
+          <li>
+            <a href="//twitter.com/<%= tweet.user.name %>"
+               data-detail-id="<%= tweet.user.screen_name %>"><%= tweet.user.name %></a><br>
+            <%= tweet.text %><br>
+            <%= tweet.created_at %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </section>
+
+  <script id="loading-tpl" type="text/x-handlebars-tpl">
+    <section>
+      <img src="/assets/ajax-loader.gif" class="throbber">
+    </section>
+  </script>
+
+  <script id="user-tpl" type="text/x-handlebars-tpl">
+    <section>
+      <header>
+        <h2>{{user.name}}</h2>
+      </header>
+      <ul>
+        {{#each tweets}}
+          <li>
+            {{this.text}}<br>
+            {{this.created_at}}
+          </li>
+        {{/each}}
+      </ul>
+    </section>
+  </script>
+
+  <div id="user-display-target"></div>
+
 <% end %>

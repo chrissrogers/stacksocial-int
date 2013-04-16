@@ -7,4 +7,6 @@ StacksocialInt::Application.routes.draw do
   match '/hi' => 'sessions#new', :as => :login
   match '/bye' => 'sessions#destroy', :as => :logout
 
+  match '/api/user/:id' => 'home#user_detail'
+
 end

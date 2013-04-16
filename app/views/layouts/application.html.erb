@@ -4,6 +4,9 @@
   <title>Stacksocial Twitter Consumer</title>
   <%= stylesheet_link_tag 'application', :media => 'all' %>
   <%= stylesheet_link_tag '//fonts.googleapis.com/css?family=Open+Sans:400,700,300italic,700italic' %>
+  <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' %>
+  <%= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js' %>
+  <%= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0-rc.3/handlebars.min.js' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
@@ -11,14 +14,13 @@
 
   <header>
     <h1>CONSUMERIST</h1>
-    <p>Eats birds</p>
-    <aside>
-      <% if signed_in? %>
-        <%= link_to 'logout', logout_path %>
-      <% else %>
-        <%= link_to 'Sign in with Twitter', login_path, { class: 'btn' } %>
-      <% end %>
-    </aside>
+    <% if signed_in? %>
+      <p>Greetings <%= current_user.name %></p>
+      <aside><%= link_to 'logout', logout_path, { class: 'btn' } %></aside>
+    <% else %>
+      <p>Please sign in</p>
+      <aside><%= link_to 'Sign in with Twitter', login_path, { class: 'btn' } %></aside>
+    <% end %>
   </header>
 
   <div id="main">

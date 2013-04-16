@@ -7,6 +7,8 @@ gem 'pg'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+gem 'twitter'
+
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
   gem 'bourbon'
