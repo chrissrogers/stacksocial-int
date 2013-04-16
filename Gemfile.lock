@@ -101,7 +101,7 @@ PLATFORMS
 
 DEPENDENCIES
   pg
-  rails (~> 3.2.12)
+  rails (= 3.2.12)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
   unicorn
