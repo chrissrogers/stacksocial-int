@@ -1,0 +1,35 @@
+
+input[type='text'] {
+  @include box-shadow(0 1px 1px rgba(175,175,175,0.5) inset);
+  border: 1px solid #CCC;
+  border-bottom-color: #BBB;
+  font: inherit;
+  background: white;
+  padding: 0.25em;
+}
+
+.btn {
+  @include button-reset;
+  @include anchor-reset;
+
+  @include box-shadow(0 -1px 1px rgba(255,255,255,0.75) inset, 0 1px 2px rgba(100,100,100,0.25));
+  border: 1px solid #CCC;
+  border-bottom-color: #BBB;
+  @include linear-gradient(#FAFAFA, #EAEAEA);
+  font-size: 90%;
+  font-weight: bold;
+  padding: 0.375em;
+
+  &.green {
+    @include box-shadow(0 -1px 1px rgba(142, 164, 130, 0.75) inset, 0 1px 2px rgba(100, 100, 100, 0.25));
+    border-color: #648257;
+    border-bottom-color: #506745;
+    @include linear-gradient(#679951, #517C39);
+    color: white;
+    text-shadow: 0 -1px #555;
+  }
+
+  &:hover {
+    @include box-shadow(0 -1px 1px rgba(255,255,255,0.95) inset, 0 1px 2px rgba(100,100,100,0.45));
+  }
+}

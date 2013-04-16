@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>StacksocialInt</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <title>Stacksocial Twitter Consumer</title>
+  <%= stylesheet_link_tag 'application', :media => 'all' %>
+  <%= stylesheet_link_tag '//fonts.googleapis.com/css?family=Open+Sans:400,700,300italic,700italic' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <header>
+    <h1>CONSUMERIST</h1>
+    <p>Eats birds</p>
+    <aside>
+      <% if signed_in? %>
+        <%= link_to 'logout', logout_path %>
+      <% else %>
+        <%= link_to 'Sign in with Twitter', login_path, { class: 'btn' } %>
+      <% end %>
+    </aside>
+  </header>
+
+  <div id="main">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

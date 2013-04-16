@@ -1,0 +1,181 @@
+
+body {
+  background: url('/assets/bg.png');
+  color: #333;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 90%;
+  width: 960px;
+  margin: 0 auto;
+}
+
+a, button {
+  cursor: pointer;
+  &:focus { outline: 1px dotted #333; }
+}
+
+header {
+  @include clearfix;
+  margin: 10px;
+
+  h1 {
+    text-shadow: 0 1px #FAFAFA;
+    font-size: 135%;
+    margin: 0;
+    float: left;
+  }
+
+  p {
+    font-size: 85%;
+    margin: 0;
+    float: left;
+    clear: left;
+  }
+
+  aside {
+    float: right;
+  }
+}
+
+#main {
+  @include outer-container;
+  @include clearfix;
+
+  section {
+    @include span-columns(6);
+    @include nth-omega(2n);
+    @include translucent-outline(rgba(200,200,200,0.25));
+    margin-bottom: 20px;
+
+    @include box-shadow(0 1px 2px rgba(100, 100, 100, 0.25), 0 -3px 3px #EAEAEA inset);
+    border: 1px solid #CCC;
+    border-bottom-color: #BBB;
+    background: white;
+    float: left;
+    position: relative;
+
+    .loader{
+      margin: 10px auto 20px;
+      display: block;
+    }
+
+    .error{
+      padding: 10px 0 20px;
+      text-align: center;
+
+      p {
+        margin: 0;
+      }
+
+      a {
+        color: black;
+        text-decoration: none;
+        &:hover { text-decoration: underline; }
+      }
+    }
+
+    header {
+      @include box-shadow(0 -1px 1px rgba(255,255,255,0.5) inset);
+      border-bottom: 1px solid #DDD;
+      @include linear-gradient(#FAFAFA, #EAEAEA);
+      text-shadow: 0 1px white;
+      padding: 0 0.5em 0.25em;
+      margin: 0 0 0.5em;
+      position: relative;
+
+
+      h2 {
+        font-size: 125%;
+        font-weight: normal;
+        margin: 0;
+      }
+
+      .deployment-status {
+        font-size: 80%;
+        margin: 0;
+
+        span {
+          color: #999;
+          .toggle-history{
+            @include button-reset;
+            margin-left: 20px;
+            font-size: 95%;
+            color: #333;
+            &:hover{text-decoration: underline;}
+          }
+        }
+      }
+
+      .history {
+        display: none;
+        color: #999;
+        font-size: 80%;
+      }
+
+      .view-details {
+        height: 2em;
+        line-height: 2em;
+        padding: 0 0.5em;
+        position: absolute;
+        right: 10px;
+        top: 1em;
+      }
+    }
+
+  }
+
+
+  table {
+    border-collapse: collapse;
+    font-size: 85%;
+    width: 96%;
+    margin: 2%;
+
+    thead tr {
+      border-bottom: 1px dotted #CCC;
+    }
+
+    tbody tr:nth-child(even) {
+      background: $light-pale-green;
+    }
+
+    th, td {
+      padding: 0.25em;
+      text-align: left;
+
+      &.commit-hash {
+        text-align: right;
+      }
+    }
+
+    tbody th {
+      font-weight: normal;
+    }
+
+    td {
+      max-width: 200px;
+      word-wrap: break-word;
+
+      a {
+        @include anchor-reset;
+        &:hover { text-decoration: underline; }
+      }
+
+      &.commit-hash {
+        font-family: $monospace;
+      }
+
+      &.compare {
+        text-align: right;
+        width: 2em;
+      }
+    }
+  }
+
+  .compare-commit {
+    font-size: 100%;
+    font-weight: normal;
+    line-height: 1;
+    width: 1.5em;
+    padding: 0.25em 0;
+  }
+}
